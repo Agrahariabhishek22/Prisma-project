@@ -9,6 +9,8 @@ const cookieToken=(user,res)=>{
         httpOnly:true
     }
     user.password=undefined;
+    console.log(user);
+    
     res.status(200).cookie('token',token,options).json({
         success:true,
         token,

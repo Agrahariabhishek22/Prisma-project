@@ -10,6 +10,10 @@ app.get('/',(req,res)=>{
     res.send("Welcome to Prisma ORM");
 })
 
+const userRouter=require('./routes/userRoutes');
+
+app.use('/api/v1',userRouter)
+
 
 app.listen(3000,()=>{
     console.log("Server is running on PORT 3000");
