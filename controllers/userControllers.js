@@ -34,8 +34,23 @@ exports.signup=async(req,res,next)=>{
 exports.login=async(req,res,next)=>{
     try {
         const {email,password}=req.body;
-        
+        if(!email||!password){
+            throw new Error('please provide all fields');
+        }
+        const user=await prisma.user.findUnique({
+            where:{
+                email:"balajeet22@gmail.com",
+            },
+        })
+        if(!user){
+            return res.status(400).json({
+                error:"Please create account",
+            })
+        }
+        cookieToken(user,res);
+
     } catch (error) {
-        
+        console.error("Login Error:", error);
+    res.status(500).json({ error: error.message });
     }
 }

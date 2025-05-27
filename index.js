@@ -11,8 +11,10 @@ app.get('/',(req,res)=>{
 })
 
 const userRouter=require('./routes/userRoutes');
+const postRouter=require('./routes/postRoutes');
 
-app.use('/api/v1',userRouter)
+app.use('/api/v1',userRouter);
+app.use('/api/v1',postRouter);
 
 
 app.listen(3000,()=>{
